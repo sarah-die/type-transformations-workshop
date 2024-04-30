@@ -4,9 +4,12 @@ const myFunc = () => {
   return "hello";
 };
 
-/**
- * How do we extract MyFuncReturn from myFunc?
- */
-type MyFuncReturn = unknown;
+// typeof with funtions
+type MyFunc = typeof myFunc;
+// ReturnType = Utility type
+type ReturnValue = ReturnType<MyFunc>
+
+// one liner
+type MyFuncReturn = ReturnType<typeof myFunc>;
 
 type tests = [Expect<Equal<MyFuncReturn, string>>];
