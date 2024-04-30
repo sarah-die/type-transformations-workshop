@@ -1,5 +1,6 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
+// task: take makeQuery and get param types from it
 const makeQuery = (
   url: string,
   opts?: {
@@ -11,7 +12,10 @@ const makeQuery = (
   },
 ) => {};
 
-type MakeQueryParameters = unknown;
+// note: Parameters returns a tuple type
+type MakeQueryParameters = Parameters<typeof makeQuery>;
+// access specific param type
+type MakeQueryParametersSecondArg = MakeQueryParameters[1];
 
 type tests = [
   Expect<
