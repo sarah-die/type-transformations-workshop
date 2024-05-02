@@ -14,7 +14,10 @@ export type Event =
       event: KeyboardEvent;
     };
 
-type NonKeyDownEvents = unknown;
+// utility type
+// reverse extract
+// excluding a type of a union by certain condition
+type NonKeyDownEvents = Exclude<Event, { type: "keydown" }>;
 
 type tests = [
   Expect<
@@ -23,5 +26,5 @@ type tests = [
       | { type: "click"; event: MouseEvent }
       | { type: "focus"; event: FocusEvent }
     >
-  >,
+  >
 ];
