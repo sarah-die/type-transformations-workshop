@@ -8,22 +8,44 @@
  * Which is which?
  */
 
+/**
+ * discriminated union
+ * have a common key (a key that all entities have) or a common aspect to that object that is the discriminator
+ * discriminator = Unterscheidungsmerkmal
+ * usage: can represent different props in react
+ * get access to props depending on a discriminator
+ */
 type A =
   | {
       type: "a";
-      a: string;
+      whatEver: string;
     }
   | {
       type: "b";
-      b: string;
+      whoEver: string;
     }
   | {
       type: "c";
-      c: string;
+      whereEver: string;
     };
 
+const getUnion = (result: A) => {
+  // not possible to access it here, because it does not exist on one of the other discriminators
+  result.whatEver;
+  if (result.type === "a") {
+    // gives access to one of the objects
+    result.whatEver;
+  }
+};
+
+/**
+ * union
+ * a union does not carry properties along with it
+ * usage: check if it´s a then do something
+ */
 type B = "a" | "b" | "c";
 
+// enum
 enum C {
   A = "a",
   B = "b",
