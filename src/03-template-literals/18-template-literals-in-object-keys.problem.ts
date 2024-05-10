@@ -2,7 +2,9 @@ import { Equal, Expect } from "../helpers/type-utils";
 
 type TemplateLiteralKey = `${"user" | "post" | "comment"}${"Id" | "Name"}`;
 
-type ObjectOfKeys = unknown;
+// turn the union type made from templateLiterals to an object
+// create any number of object keys that are all of type string (for now)
+type ObjectOfKeys = Record<TemplateLiteralKey, string>;
 
 type tests = [
   Expect<
@@ -17,5 +19,5 @@ type tests = [
         commentName: string;
       }
     >
-  >,
+  >
 ];
