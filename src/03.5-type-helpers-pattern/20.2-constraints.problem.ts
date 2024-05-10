@@ -1,6 +1,9 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
-type AddRoutePrefix<TRoute> = `/${TRoute}`;
+// TRoute must be a string
+// constrain the type using extends
+// note: when not using extends TRoute defaults to unknown
+type AddRoutePrefix<TRoute extends string> = `/${TRoute}`;
 
 type tests = [
   Expect<Equal<AddRoutePrefix<"">, "/">>,
@@ -10,5 +13,5 @@ type tests = [
   // @ts-expect-error
   AddRoutePrefix<boolean>,
   // @ts-expect-error
-  AddRoutePrefix<number>,
+  AddRoutePrefix<number>
 ];
