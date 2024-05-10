@@ -1,10 +1,11 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
 type BreadType = "rye" | "brown" | "white";
-
 type Filling = "cheese" | "ham" | "salami";
 
-type Sandwich = unknown;
+// passing a union type into a template literal
+// TS automatically expands it so that you get union type back out of it
+type Sandwich = `${BreadType} sandwich with ${Filling}`;
 
 type tests = [
   Expect<
