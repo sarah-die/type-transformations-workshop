@@ -2,7 +2,10 @@ import { Equal, Expect } from "../helpers/type-utils";
 
 type Event = `log_in` | "log_out" | "sign_up";
 
-type ObjectOfKeys = unknown;
+// keys should be uppercase
+// Uppercase Utility Type maps over each member of a union and transforms it
+// Capitalize / Lowercase / Uncapitalize
+type ObjectOfKeys = Record<Uppercase<Event>, string>;
 
 type tests = [
   Expect<
@@ -14,5 +17,5 @@ type tests = [
         SIGN_UP: string;
       }
     >
-  >,
+  >
 ];
