@@ -6,10 +6,13 @@ const frontendToBackendEnumMap = {
   sharedModule: "SHARED_MODULE",
 } as const;
 
-type BackendModuleEnum = unknown;
+type FEToBEKeys = keyof typeof frontendToBackendEnumMap;
+
+// get all objects values
+type BackendModuleEnum = (typeof frontendToBackendEnumMap)[FEToBEKeys];
 
 type tests = [
   Expect<
     Equal<BackendModuleEnum, "SINGLE_MODULE" | "MULTI_MODULE" | "SHARED_MODULE">
-  >,
+  >
 ];
